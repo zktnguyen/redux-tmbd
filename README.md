@@ -7,7 +7,7 @@ Checkout this repo, install dependencies, then start the gulp process with the f
 
 ```
 > git clone https://github.com/zktnguyen/redux-tmbd.git
-> cd ReduxSimpleStarter
+> cd redux-tmbd
 > npm install
 > npm start
 ```
