@@ -16,7 +16,8 @@ class SearchBar extends Component {
   onFormSubmit(event) {
     event.preventDefault();
     const searchTerm = this.state.term;
-    
+    this.props.fetchMovies(searchTerm);
+    this.setState({term: ''});
   }
 
   render() {
