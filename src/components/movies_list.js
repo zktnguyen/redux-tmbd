@@ -3,11 +3,13 @@ import { connect } from 'react-redux';
 
 class MoviesList extends Component {
   render() {
-    console.log(this.props.movies);
+    const movieItems = this.props.movies.map((movie) => {
+      return <li>{movie.title}</li>
+    });
     return (
-      <div>
-        
-      </div>
+      <ul className="list-group">
+        {movieItems}
+      </ul>
     )
   }
 };
