@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 class MoviesList extends Component {
   render() {
     const movieItems = this.props.movies.map((movie) => {
-      return <li>{movie.title}</li>
+      return <li className="list-group-item" key={movie.title}>{movie.title}</li>;
     });
     return (
       <ul className="list-group">

@@ -23,7 +23,7 @@ class SearchBar extends Component {
   render() {
     return (
       <div>
-        <form onSubmit={this.onFormSubmit.bind(this)} className="input-group">
+        <form onSubmit={this.onFormSubmit.bind(this)} className="input-group search-bar">
           <input className="form-control"
             placeholder="La La Land"
             value={this.state.term}

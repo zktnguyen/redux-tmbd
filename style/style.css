@@ -1,10 +1,18 @@
 .search-bar {
-  margin: 20px;
+  margin: 20px 20px 0px 20px;
   text-align: center;
 }
 
 .search-bar input {
-  width: 75%;
+  width: 80%;
+}
+
+ul {
+  margin-left: 20px !important;
+  margin-right: 0px !important;
+  width: 89%;
+  height: 200px;
+  overflow: auto;
 }
 
 .list-group-item {
