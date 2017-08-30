@@ -1,15 +1,21 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {fetchMovie} from '../actions';
-import createFragment from 'react-addons-create-fragment';
 
 
 class MovieDetail extends Component {
+  constructor(props){
+    super(props);
+
+    this.state = {credits: {}};
+  }
+
   componentDidMount(){
     if(!this.props.movie){
       const {id} = this.props.match.params;
       this.props.fetchMovie(id);
     }
+
   }
 
   render(){
@@ -19,9 +25,9 @@ class MovieDetail extends Component {
     const {movie} = this.props;
     console.log(movie);
     return (
-      <div className="row">
+      <div className="row movie-detail">
         <div className="col-md-2"></div>
-        <div className="col-md-8">
+        <div className="col-md-8 box">
           <h1>{movie.title}</h1>
           <p>{movie.overview}</p>
         </div>

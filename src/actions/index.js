@@ -3,7 +3,7 @@ export const FETCH_MOVIES = 'fetch_movies';
 export const FETCH_MOVIE = 'fetch_movie';
 
 const ROOT_URL = 'https://api.themoviedb.org/3/search/movie?api_key=';
-const MOVIE_URL = 'https://api.themoviedb.org/3/movie/'
+const MOVIE_URL = 'https://api.themoviedb.org/3/movie/';
 const API_KEY = 'aebde7334bf6d11a38e0c1e8a4625470';
 
 

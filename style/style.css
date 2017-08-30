@@ -1,3 +1,18 @@
+html, body {
+  height: 100% !important;
+  background-color: #859cc1 !important;
+}
+
+.movie-detail {
+  margin: 125px;
+}
+
+.movie-detail > .box {
+  padding: 35px;
+  background-color: #e0e2e5;
+  border: 1px solid #b8c2d3;
+  border-radius: 1%;
+}
 .search-bar {
   margin: 20px 20px 0px 20px;
   text-align: center;
