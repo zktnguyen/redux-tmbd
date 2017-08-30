@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import SearchBar from './search_bar';
 import MoviesList from './movies_list';
 
-export default class App extends Component {
+export default class Index extends Component {
   render() {
     return (
       <div>

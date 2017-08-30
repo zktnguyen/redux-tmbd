@@ -1,10 +1,22 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 class MoviesList extends Component {
+
   render() {
-    const movieItems = this.props.movies.map((movie) => {
-      return <li className="list-group-item" key={movie.title}>{movie.title}</li>;
+    if (!this.props.movies){
+      return <div></div>
+    }
+
+    const movieItems = _.map(this.props.movies, movie => {
+      return (
+        <Link to={`/movies/${movie.title}/${movie.id}`} key={movie.id}>
+          <li className="list-group-item">
+            {movie.title}
+          </li>
+        </Link>
+      );
     });
     return (
       <ul className="list-group">
@@ -17,4 +29,5 @@ class MoviesList extends Component {
 function mapStateToProps({ movies }){
   return { movies };
 };
+
 export default connect(mapStateToProps)(MoviesList);
