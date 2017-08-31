@@ -1,35 +1,91 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import {fetchMovie} from '../actions';
-
+import {fetchMovie, fetchCredits} from '../actions';
+import axios from 'axios';
+import _ from 'lodash';
+const IMAGE_URL = 'https://image.tmdb.org/t/p/';
+const MOVIE_URL = 'https://api.themoviedb.org/3/movie/';
+const API_KEY = 'aebde7334bf6d11a38e0c1e8a4625470';
 
 class MovieDetail extends Component {
   constructor(props){
     super(props);
 
-    this.state = {credits: {}};
   }
 
   componentDidMount(){
     if(!this.props.movie){
       const {id} = this.props.match.params;
       this.props.fetchMovie(id);
+      if(!this.props.credits){
+        const {id} = this.props.match.params;
+        this.props.fetchCredits(id);
+      }
     }
 
+    
+  }
+
+  renderCast(){
+    const {credits} = this.props;
+    return credits.cast.map((member) => {
+      return <li key={member.cast_id}>{member.name} as {member.character}</li>;
+    });
+  }
+
+  returnDirector(){
+    return this.props.credits.crew[0].name;
   }
 
   render(){
-    if (!this.props.movie){
+    if (!this.props.movie || !this.props.credits){
       return <div>Loading...</div>
     }
     const {movie} = this.props;
+    const {credits} = this.props;
     console.log(movie);
+    console.log(credits);
     return (
       <div className="row movie-detail">
         <div className="col-md-2"></div>
         <div className="col-md-8 box">
-          <h1>{movie.title}</h1>
-          <p>{movie.overview}</p>
+          <div className="row">
+            <div className="col-md-6">
+              <h6>{movie.tagline}</h6>
+            </div>
+            <div className="col-md-6"></div>
+          </div>
+          <div className="row">
+            <div className="col-md-6">
+              <h1>{movie.title}</h1>
+
+            </div>
+            <div className="col-md-4">
+              <h5>Rating: {movie.vote_average} / 10</h5>
+              <h5>Length: {movie.runtime} minutes</h5>
+            </div>
+            <div className="col-md-2">
+
+            </div>
+          </div>
+          <div className="row">
+            <div className="col-md-6">
+              <img className="img-fluid rounded" src={`${IMAGE_URL}/w300/${movie.poster_path}`}/>
+            </div>
+            <div className="col-md-6">
+              <p>{movie.overview}</p>
+              <p>Starring: <br/>
+                {this.renderCast()}
+              </p>
+              <h3>Directed by: {this.returnDirector()}</h3>
+            </div>
+          </div>
+          <div className="row">
+            <div className="col-md-6">
+              <a href={movie.homepage}>Visit the Movie Homepage</a>
+            </div>
+            <div className="col-md-6"></div>
+          </div>
         </div>
         <div className="col-md-2"></div>
       </div>
@@ -38,8 +94,8 @@ class MovieDetail extends Component {
   }
 }
 
-function mapStateToProps({movies}, ownProps){
-  return {movie: movies[ownProps.match.params.id]};
+function mapStateToProps({movies, credits}, ownProps){
+  return {movie: movies[ownProps.match.params.id], credits};
 }
 
-export default connect(mapStateToProps, {fetchMovie})(MovieDetail);
+export default connect(mapStateToProps, {fetchMovie, fetchCredits})(MovieDetail);
