@@ -1,4 +1,4 @@
-# TMBD API movie display
+# TMDb API movie display
 
 Created using the ReduxSimpleStarter boilerplate by StephenGrider.
 
