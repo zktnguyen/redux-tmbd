@@ -6,10 +6,6 @@ const IMAGE_URL = 'https://image.tmdb.org/t/p/';
 
 
 class MovieDetail extends Component {
-  constructor(props){
-    super(props);
-
-  }
 
   componentDidMount(){
     const {id} = this.props.match.params;
@@ -43,11 +39,11 @@ class MovieDetail extends Component {
     console.log(credits);
     
     return (
-      <div className="container">
+      <div>
         <Link to="/">Back to Index</Link>
         <div className="row movie-detail">
-          <div className="col-md-2"></div>
-          <div className="col-md-8 box">
+          <div className="col-md-1"></div>
+          <div className="col-md-10 box">
             <div className="row">
               <div className="col-md-6">
                 <h6>{movie.tagline}</h6>
@@ -69,7 +65,7 @@ class MovieDetail extends Component {
             </div>
             <div className="row">
               <div className="col-md-6">
-                <img className="img-fluid rounded" src={`${IMAGE_URL}/w300/${movie.poster_path}`}/>
+                <img className="img-fluid rounded" alt={movie.title} src={`${IMAGE_URL}/w300/${movie.poster_path}`}/>
               </div>
               <div className="col-md-6">
                 <p>{movie.overview}</p>
@@ -86,7 +82,7 @@ class MovieDetail extends Component {
               <div className="col-md-6"></div>
             </div>
           </div>
-          <div className="col-md-2"></div>
+          <div className="col-md-1"></div>
         </div>
       </div>
       
