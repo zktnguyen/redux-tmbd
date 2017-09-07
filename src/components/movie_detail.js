@@ -12,14 +12,12 @@ class MovieDetail extends Component {
   }
 
   componentDidMount(){
+    const {id} = this.props.match.params;
+    this.props.fetchMovie(id);
+    if(!this.props.credits){
       const {id} = this.props.match.params;
-      this.props.fetchMovie(id);
-      if(!this.props.credits){
-        const {id} = this.props.match.params;
-        this.props.fetchCredits(id);
-      }
-
-
+      this.props.fetchCredits(id);
+    }
     
   }
 
@@ -38,10 +36,12 @@ class MovieDetail extends Component {
     if (!this.props.movie || !this.props.credits){
       return <div>Loading...</div>
     }
+
     const {movie} = this.props;
     const {credits} = this.props;
     console.log(movie);
     console.log(credits);
+    
     return (
       <div className="container">
         <Link to="/">Back to Index</Link>
