@@ -1,9 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import _ from 'lodash';
 import { Link } from 'react-router-dom';
+import { fetchMovie } from '../actions';
 
 class MoviesList extends Component {
-
+  onMovieClick(movie){
+    this.props.fetchMovie(movie.id);
+    console.log(movie.title + " clicked");
+  }
+  
   render() {
     if (!this.props.movies){
       return <div></div>
@@ -11,7 +17,7 @@ class MoviesList extends Component {
 
     const movieItems = _.map(this.props.movies, movie => {
       return (
-        <Link to={`/movies/${movie.title}/${movie.id}`} key={movie.id}>
+        <Link onClick={()=>this.onMovieClick(movie)} to={`/movies/${movie.title}/${movie.id}`} key={movie.id}>
           <li className="list-group-item">
             {movie.title}
           </li>
@@ -30,4 +36,4 @@ function mapStateToProps({ movies }){
   return { movies };
 };
 
-export default connect(mapStateToProps)(MoviesList);
+export default connect(mapStateToProps, {fetchMovie})(MoviesList);

@@ -1,14 +1,12 @@
 # TMDb API movie display
 
-Created using the ReduxSimpleStarter boilerplate by StephenGrider.
+Created using the `create-react-app` boilerplate.
 
 #### How to use (Must be Familiar with Git)
-Checkout this repo, install dependencies, then start the gulp process with the following:
 
 ```
-> git clone https://github.com/zktnguyen/redux-tmbd.git
+> git clone https://github.com/zktnguyen/redux-tmdb.git
 > cd redux-tmbd
 > npm install
 > npm start
 ```
-
